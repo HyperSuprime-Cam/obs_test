@@ -8,3 +8,5 @@ doc/html
 doc/*.tag
 doc/*.inc
 doc/doxygen.conf
+tests/data/input/config-*.py
+tests/data/input/md_*.boost
