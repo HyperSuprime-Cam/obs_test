@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # 
 # LSST Data Management System
 # Copyright 2008, 2009, 2010 LSST Corporation.
@@ -19,6 +20,10 @@
 # the GNU General Public License along with this program.  If not, 
 # see <http://www.lsstcorp.org/LegalNotices/>.
 #
-from .version import *
-from .testConfig import *
-from .testMapper import *
+import lsst.pex.config as pexConfig
+
+__all__ = ["TestConfig"]
+
+class TestConfig(pexConfig.Config):
+    floatField = pexConfig.Field(doc="float field", dtype=float, default=3.1)
+    strField = pexConfig.Field(doc="str field", dtype=str, default="default for strField")
