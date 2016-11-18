@@ -25,7 +25,7 @@
 import os
 import unittest
 
-import lsst.pex.policy
+import lsst.daf.persistence as dafPersist
 # we only import lsst.obs.test.TestMapper from lsst.obs.test, but use the namespace to hide it from pytest
 import lsst.obs.test
 import lsst.utils.tests
@@ -61,8 +61,8 @@ class PolicyTestCase(unittest.TestCase):
 
             # Run a simple test case to verify that although the package's policy was overloaded with some
             # values, other values specified in the policy file in the package are loaded.
-            policyPath = os.path.join(obsTestDir, 'policy', 'testMapper.paf')
-            policy = lsst.pex.policy.Policy_createPolicy(policyPath)
+            policyPath = os.path.join(obsTestDir, 'policy', 'testMapper.yaml')
+            policy = dafPersist.Policy(policyPath)
             template = policy.get('exposures.postISRCCD.template')
             mapperTemplate = mapper.mappings['postISRCCD'].template
             self.assertEqual(template, mapperTemplate)
